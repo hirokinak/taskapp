@@ -8,6 +8,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+      .nabvar-brand Taskapp
     .container
       - if flash.notice.present?
         .alert.alert-success= flash.notice
