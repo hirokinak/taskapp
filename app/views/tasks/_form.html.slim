@@ -15,5 +15,8 @@
     = f.datetime_select :deadline, id: 'task_deadline'
   .form-group
     = f.label :status
-    = f.select :status, Task.statuses.keys, :selected=>Task.statuses[@task.status]
+    = f.select :status, Task.statuses.keys
+  .form-group
+    = f.label :priority
+    = f.select :priority, Task.priorities.keys
   = f.submit nil, class: 'btn btn-primary'
