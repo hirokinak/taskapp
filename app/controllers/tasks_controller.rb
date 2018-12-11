@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
     #@tasks = Task.all.order(deadline: :asc)
     @q = Task.ransack(params[:q])
-    @tasks = @q.result(distinct: true)
+    @tasks = @q.result(distinct: true).page(params[:page])
   end
 
   def new

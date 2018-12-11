@@ -3,4 +3,5 @@ class Task < ApplicationRecord
   enum priority: {"低": 0, "中": 10, "高": 20}
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true, length: { maximum: 200 }
+  paginates_per 10
 end
