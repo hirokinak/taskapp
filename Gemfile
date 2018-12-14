@@ -36,5 +36,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails-i18n', '~> 5.1' 
 gem 'enum_help'
+gem 'enum_select_rails'
 gem 'ransack'
 gem 'kaminari'

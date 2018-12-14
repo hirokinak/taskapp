@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@tasks = Task.all.order(deadline: :asc)
     @q = Task.ransack(params[:q])
     @tasks = @q.result(distinct: true).page(params[:page])
   end
@@ -19,7 +18,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to @task, notice:"タスク「#{@task.name}」を更新しました。" 
+      redirect_to @task, notice: "タスク「#{@task.name}」を更新しました。" 
     else
       render :edit
     end
@@ -27,14 +26,14 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to @task, notice:"タスク「#{@task.name}」を削除しました。" 
+    redirect_to @task, notice: "タスク「#{@task.name}」を削除しました。" 
   end
 
   def create
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to @task, notice:"タスク「#{@task.name}」を登録しました。"
+      redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。"
     else
       render :new
     end
@@ -42,11 +41,11 @@ class TasksController < ApplicationController
 
   private
 
-  def task_params
-    params.require(:task).permit(:name, :description, :deadline, :status, :priority)
-  end
+    def task_params
+      params.require(:task).permit(:name, :description, :deadline, :status, :priority)
+    end
 
-  def set_task
-    @task = Task.find(params[:id])
-  end
+    def set_task
+      @task = Task.find(params[:id])
+    end
 end

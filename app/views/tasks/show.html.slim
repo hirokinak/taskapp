@@ -27,7 +27,7 @@ table.table.table-hover
       td= @task.status_i18n
     tr 
       th= Task.human_attribute_name(:priority)
-      td= @task.priority
+      td= @task.priority_i18n
 
 = link_to '編集', edit_task_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @task, method: :delete, data: { confirm: "タスク「#{@task.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

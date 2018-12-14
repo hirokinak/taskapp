@@ -82,6 +82,9 @@ GEM
     crass (1.0.4)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
+    enum_select_rails (0.2.0)
+      enum_help
+      rails
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -241,6 +244,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   enum_help
+  enum_select_rails
   html2slim
   jbuilder (~> 2.5)
   kaminari

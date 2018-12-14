@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
-  enum status: {"未着手": 0, "実行中": 1,  "完了": 2}
-  enum priority: {"低": 0, "中": 10, "高": 20}
+  enum status: {"draft": 0, "doing": 1,  "done": 2}
+  enum priority: {"low": 0, "middle": 10, "high": 20}
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true, length: { maximum: 200 }
   paginates_per 10
