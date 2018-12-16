@@ -9,7 +9,7 @@ h1 タスク一覧
   .form-group.row
     = f.label :status_eq, 'ステータス', class: 'col-sm-2 col-form-label'
     .col-sm-10
-      = f.select :status_eq, [["全て", ""], ["未着手", "0"], ["着手中", "1"], ["完了", "2"]], class: 'form-control'
+      = f.select :status_eq, [["全て", ""], ["未着手", "0"], ["着手中", "1"], ["完了", "2"]], {}, class: 'col-sm-1 form-control'
   .form-group
     = f.submit class: 'btn btn-outline-primary'
   = link_to '新規登録', new_task_path, class: 'btn btn-primary'
