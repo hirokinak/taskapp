@@ -6,4 +6,5 @@ class Task < ApplicationRecord
   paginates_per 10
 
   belongs_to :user
+  counter_culture :user
 end
