@@ -18,7 +18,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to @task, notice: "タスク「#{@task.name}」を更新しました。" 
+      redirect_to @task, notice: "タスク「#{@task.name}」を更新しました。"
     else
       render :edit
     end
@@ -26,11 +26,11 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to @task, notice: "タスク「#{@task.name}」を削除しました。" 
+    redirect_to @task, notice: "タスク「#{@task.name}」を削除しました。"
   end
 
   def create
-    @task = current_user.tasks.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     if @task.save
       redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。"

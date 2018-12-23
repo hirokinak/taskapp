@@ -1,12 +1,12 @@
 class Admin::UsersController < ApplicationController
-  before_action :require_admin
+  before_action :check_roll
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all 
+    @users = User.order(created_at: :asc).page(params[:page])
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -14,7 +14,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def create
@@ -28,8 +27,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to admin_users_path(@user), notice: "ユーザー「#{@user.name}」を更新しました。"
     else
@@ -38,18 +35,21 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_url, notice: "ユーザー「#{@user.name}」を削除しました。"
+    return redirect_to admin_users_url, notice: "管理者を削除することはできません。" if User.count <= 1
+      @user.destroy
+      redirect_to admin_users_url, notice: "ユーザー「#{@user.name}」を削除しました。"
   end
 
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
     def user_params
       params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation, :tasks_count)
     end
 
-    def require_admin
+    def check_roll
       redirect_to root_path unless current_user.admin?
     end
 end
