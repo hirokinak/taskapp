@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @q = current_user.tasks.ransack(params[:q])
+    @tasks = params[:tag_id].present? ? Tag.find(params[:tag_id]).tasks : Task.all
     @tasks = @q.result(distinct: true).page(params[:page])
   end
 

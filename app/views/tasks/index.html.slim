@@ -1,4 +1,7 @@
 h1 タスク一覧
+= form_tag tasks_path, method: :get do
+    = select_tag :tag_id,
+      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]), prompt: 'タグで絞り込み', onchange: 'submit(this.form);'
 
 = search_form_for @q do |f|
   .form-group.row
