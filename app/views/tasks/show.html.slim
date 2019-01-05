@@ -1,5 +1,10 @@
 h1  タスクの詳細
 
+- @task.tags.each do |tag|
+  <span class="badge badge-info p-2 mr-2">
+    = tag.name
+  </span>
+  
 .nav.justify-content-end
   = link_to '一覧', tasks_path, class: 'btn btn-secondary'
 table.table.table-hover
@@ -31,3 +36,6 @@ table.table.table-hover
 
 = link_to '編集', edit_task_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @task, method: :delete, data: { confirm: "タスク「#{@task.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+
+
+ 

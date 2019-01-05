@@ -5,4 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: 'user1', email: 'user1@example.com', password_digest: '1111')
+
+Tag.create([
+  { name: '生活' },
+  { name: '仕事' },
+  { name: '勉強' },
+  { name: '運動' },
+  { name: '遊び' },
+  { name: 'その他' }
+])

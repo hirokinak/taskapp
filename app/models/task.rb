@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  has_many :taggings, dependent: :delete_all
+  has_many :tags, through: :taggings
   enum status: {"draft": 0, "doing": 1,  "done": 2}
   enum priority: {"low": 0, "middle": 10, "high": 20}
   validates :name, presence: true, length: { maximum: 30 }
@@ -7,6 +9,4 @@ class Task < ApplicationRecord
 
   belongs_to :user
   counter_culture :user
-  has_many :taggings
-  has_many :tags, through: :taggings
 end
